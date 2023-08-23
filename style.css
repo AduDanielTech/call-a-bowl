@@ -313,6 +313,7 @@ background: #FFF;
 
 /* SPECIAL ORDER  */
 .special_order{
+    margin-top: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -325,6 +326,7 @@ text-align: justify;
 font-size: 50px;
 font-weight: 700;
 line-height: normal;
+margin-bottom: 2rem;
 }
 .special_order span{
     font-size: 50px;
