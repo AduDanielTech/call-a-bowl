@@ -60,7 +60,7 @@ a , p, button ,span{
 
 
 body {
-    
+    transition: all ease-in-out 0.3s;
     
     height: 100%;
     font-family: 'Lato', sans-serif;
@@ -187,9 +187,8 @@ font-weight: 700;
 
 }
 .tilt-background{
-    position: absolute;
     width: 70%;
-    border-radius: 50px;
+    border-radius: 75px;
     height: 200px;
     transform: rotate(-16deg);
     
@@ -200,7 +199,8 @@ font-weight: 700;
     
 }
 .tilt-middle{
-    height: 400px;
+    height: 350px;
+    width: 60%;
 }
 .tilt a{
     display: inline-flex;
@@ -220,10 +220,10 @@ line-height: 100px;
 
 .tilt:first-of-type{
     
-    transform: translateY(60px) translateX(30px);
+    transform: translateY(60px) translateX(60px);
 }
 .tilt:last-of-type{
-    transform: translateY(-60px) translateX(-30px);
+    transform: translateY(-60px) translateX(-60px);
 }
 
 
@@ -321,8 +321,11 @@ background: #FFF;
     width: 100%;
 }
 .special_order h1{
+    width: 100%;
+    align-items: start;
+    justify-content: flex-start;
     color: #000;
-text-align: justify;
+
 font-size: 50px;
 font-weight: 700;
 line-height: normal;
@@ -344,9 +347,11 @@ margin-bottom: 2rem;
     width: 30%;
     display: flex;
 padding: 20px 15px; 
+justify-content: space-between;
+height: 500px;
 flex-direction: column;
 align-items: start;
-gap: 1rem;
+
 border-radius: 9px;
 border: 1px solid #E6782B;
 background: #FFF;
