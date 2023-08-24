@@ -14,9 +14,12 @@
     --grey--:#BEBEBE;
     --orange-100:#E6782B;
     --orange-20:#E6782B33;
+    --orange-10:hsla(25, 87%, 59%, 0.2);
     --orange-50:#E6782B8C;
     --orange-80:#E6782BCC;
     --orange-radial-:#E6782B, #000000;
+    --default-font-size:24px;
+    --smaller-font-size:18px;
 }
 section{
     display: flex;
@@ -40,15 +43,25 @@ button{
     background: none;
 }
 a , p, button ,span{
-    font-size: 24px;
+    font-size: var(--default-font-size);
 }
 
 .orange{
     color: var(--orange-100) !important;
-    background-color: var(--orange-20);
-    border-radius: 50px;
+    position: relative;
+    height: 5px;
     width: fit-content;
-    height: 43px;
+    margin: 0px 0.5rem;
+}
+.orange_span{
+    position: absolute;
+    background-color: var(--orange-10);
+    border-radius: 50px;
+    width: calc(100% + 3px);
+    padding: 3px 10px;
+    bottom: 0;
+    right: 0px;
+    height: 40px;
 }
 .orange-bg{
     border-radius: 9px;
@@ -87,6 +100,7 @@ nav a {
     color: #000;
     font-weight: 500;
     line-height: normal;
+    font-size: var(--smaller-font-size);
 }
 .nav_logo_img{
     width: 120px;
@@ -115,7 +129,7 @@ gap: 10px;
 .landing_page{
     padding-top: 2rem;
     margin-bottom: 1rem;
-    height: 70vh;
+    
 }
 
 .landing_page> div:first-child{
@@ -128,7 +142,7 @@ gap: 10px;
 }
 
 .landing_page h1, .landing_page h1> span{
-font-size: 50px;
+font-size:  70px;
 font-weight: 700;
 }
 
@@ -174,15 +188,14 @@ font-weight: 700;
     width: 300px;
 }
 .landing_page> div:last-child{
-    width: 70%;
+    width: 50%;
     display: flex;
     justify-content: space-around;
     height: 100%;
-    padding: 1rem 2rem;
 }
 .tilt{
     height: 100%;
-    width: 70%;
+    width: 203px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -191,10 +204,11 @@ font-weight: 700;
 
 }
 .tilt-background{
-    width: 70%;
+    width: 100%;
     border-radius: 75px;
-    height: 200px;
+    height: 286px;
     transform: rotate(-16deg);
+    
     
 }
 .tilt-text{
@@ -202,17 +216,20 @@ font-weight: 700;
     color: rgb(0, 0, 0) !important;
     
 }
+.middle_tilt {
+    width: 190px;
+}
 .middle_tilt a{
-    transform: translateX(40px);
+transform: translateX(40px);    
 }
 .tilt-middle{
-    height: 350px;
-    width: 60%;
+    height: 534px;
 }
 .tilt a{
+    font-size: var(--smaller-font-size);
     display: inline-flex;
     height: 59px;
-    padding: 0px 20px;
+    padding: 0px 40px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -227,15 +244,15 @@ line-height: 100px;
 
 .tilt:first-of-type{
     
-    transform: translateY(60px) translateX(60px);
+    transform: translateY(200px);
 }
 .tilt:last-of-type{
-    transform: translateY(-60px) translateX(-60px);
+    transform: translateY(10px);
 }
 .tilt:last-of-type a{
     transform: translateX(20px);
-
 }
+
 
 
 
@@ -291,9 +308,10 @@ background: radial-gradient(49.86% 49.86% at 49.96% 50.14%, #E6782B 37.04%, #000
     height: 307px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     text-transform: capitalize;
+    padding: 20px 0px;
 }
 
 .quick_select_food p{
@@ -306,6 +324,9 @@ background: radial-gradient(49.86% 49.86% at 49.96% 50.14%, #E6782B 37.04%, #000
 
 .quick_select_food_ellipse{
     border-radius: 50px;
+    border-radius: 50px;
+    width: 140px;
+    aspect-ratio: 1 1;
 }
 .off-price{
     position: absolute;
@@ -458,4 +479,36 @@ height: 100px;
 .footer_socials{
     gap: 2rem;
     display: flex;
+}
+
+
+@media (min-width: 768px) and (max-width: 1150px) {
+
+    
+}
+@media (min-width: 1150px)  {
+    :root{
+        
+    }
+    .landing_page{
+        padding-top: 2rem;
+       
+    }
+    .tilt-background{
+        width: inherit;
+    }
+    .tilt:first-of-type{
+    
+        transform: translateY(200px) translateX(10px);
+    }
+    .tilt:last-of-type{
+        transform: translateX(-20px) translateY(10px);
+    }
+    .tilt:nth-of-type(2) a{
+        transform: translateX(50px) translateY(-10px);
+    }
+
+    .quick_select_food_ellipse{
+        width: 181px;
+    }
 }
