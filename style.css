@@ -813,7 +813,8 @@ background-color: var(--orange-50);
 .menu_titles_cont{
     width: 100%;
     display: flex;
-    padding: 0px 1rem;
+    padding: 0px 1rem 1rem 1rem;
+  
     gap: 1.5rem;
     justify-content: space-between;
 }
