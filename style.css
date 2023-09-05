@@ -1132,7 +1132,7 @@ based on demand */
     margin-top: 1rem;
     height: 250px;
     border-radius: 9px;
-    background: url(/images/contact_us_bg.png) no-repeat;
+    background: url(./images/contact_us_bg.png) no-repeat;
     background-size: cover;
     display: flex;
     justify-content: space-around;
