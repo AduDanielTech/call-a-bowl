@@ -691,6 +691,7 @@ height: 100px;
 
 .location_section{
     width:100%;
+  padding:0px 1rem;
 }
 
 .location_cont{
@@ -748,7 +749,7 @@ height: 100px;
 .location_map{
     background-color: slategrey;
     height: 100%;
-    width: 45%;
+    width: 45%;  
 }
 
 
