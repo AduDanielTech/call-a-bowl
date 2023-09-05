@@ -828,6 +828,9 @@ background-color: var(--orange-50);
     font-size: var(--smaller-font-size);
     border-radius: 9px;
 }
+.menu_title:hover{
+  cursor:pointer;
+}
 .active_title{
     border: 1px solid var(--orange-100);
     font-weight: 700;
