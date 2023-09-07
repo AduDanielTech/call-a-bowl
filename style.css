@@ -694,6 +694,7 @@ height: 100px;
 
 .location_section{
     width:100%;
+  padding:0px 1rem;
 }
 
 .location_cont{
@@ -751,7 +752,7 @@ height: 100px;
 .location_map{
     background-color: slategrey;
     height: 100%;
-    width: 45%;
+    width: 45%;  
 }
 
 
@@ -820,7 +821,8 @@ background-color: var(--orange-50);
 .menu_titles_cont{
     width: 100%;
     display: flex;
-    padding: 0px 1rem;
+    padding: 0px 1rem 1rem 1rem;
+  
     gap: 1.5rem;
     justify-content: space-between;
 }
@@ -835,6 +837,9 @@ background-color: var(--orange-50);
     text-transform: uppercase;
     font-size: var(--smaller-font-size);
     border-radius: 9px;
+}
+.menu_title:hover{
+  cursor:pointer;
 }
 .active_title{
     border: 1px solid var(--orange-100);
@@ -1140,7 +1145,7 @@ based on demand */
     margin-top: 1rem;
     height: 250px;
     border-radius: 9px;
-    background: url(/images/contact_us_bg.png) no-repeat;
+    background: url(./images/contact_us_bg.png) no-repeat;
     background-size: cover;
     display: flex;
     justify-content: space-around;
