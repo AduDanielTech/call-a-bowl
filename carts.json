@@ -1,0 +1,20 @@
+[
+  {
+    "ITEMS": [
+      {
+        "itemTitle": "*.data from order_title, .menu_overlay_quantity, .menu_product_drink (checkes to see if any child input is checked or not if yes copy the label name which would be in a p tag inside the label),
+        .swallow_menu_options ( checkes to see if any child  input is checked or not if yes copy the label name which would be in a p tag inside the label),
+        .special instructions-{special_instructions_input(innertext from this class },*",
+        "quantity": 1,
+        "total_price": "integer gotten from the textcontent of this .overlay_total_price_text"
+      },
+      {
+        "id": "4e133e19",
+        "quantity": 6
+      }
+     
+    ],
+    "itemsQuantity": "no of items in the 'ITEMS' object above",
+    "total": "sum of all the 'total_price' in each items in 'ITEMS'"
+  }
+]

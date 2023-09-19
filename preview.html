@@ -1,3 +1,4 @@
+<!-- preview.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +15,8 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
   />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
 </head>
 <body>
-  <main>
     <header>
         <nav class="nav"  id="nav">            
         <div class="nav-header" >
@@ -59,139 +57,63 @@
          </div>
         </nav>
     </header>
-    <div class="modal-overlay ">
-        <div class="modal-container menu_cont_overlay">
-            <div class="menu_overlay_title order_title">
-                Yam Porridge & Fried Plantain with Titus Fish
-            </div>
-            <div class="menu_product_price border_bottom_menu">
-               <strong> ₦</strong> <p class="menu_product_price_text">2,200</p>
-            </div>
-           
-            <div class="menu_product_quantity border_bottom_menu" >
-                <div class="menu_overlay_title">
-                    Quantity
-                </div>
-                <div class="menu_quantity_change">
-                    <div class="menu_quantity_change_button decrement_overlay_item">
-                        -
+    <main>
+        <section class="preview_section">
+            <div class="preview_customer_address_cont">
+                <div class="upper_preview_customer_address_cont">
+                    <div class="upper_preview_customer_address_cont_text">
+                       CUSTOMER ADDRESS
                     </div>
-                    <p class="menu_overlay_quantity">
-                      1
-                    </p>
-                    <div class="menu_quantity_change_button increment_overlay_item">
-                        +
+                    <a href="./signup.html" class=" change_user_details">
+                        change >
+                    </a>
+                </div>
+                <div class="lower_preview_customer_address_cont">
+                    <h1 class="lower_preview_customer_address_cont_header" id="previewName"></h1>
+                    <p class="lower_preview_customer_address_cont_p"><span id="previewLocation"></span>|<span id="previewPhoneNumber"></span> |<span id="previewEmailAddress"></span></p>
+                </div>
+            </div>
+            <div class="preview_customer_address_cont">
+                <div class="upper_preview_customer_address_cont">
+                    <div class="upper_preview_customer_address_cont_text">
+                        CArT DETAILS
                     </div>
+                    <a href="./menu.html" class=" change_user_details">
+                        change >
+                    </a>
+                </div>
+                <div class="lower_preview_customer_address_cont cart_preview_details">
+                  
+                </div>
+                <div class="total_cont">
+                    <span>Total</span>
+                    <span class="total_cont_text"></span>
                 </div>
             </div>
-            <div class="menu_product_drink border_bottom_menu">
-                <div class="menu_overlay_title">
-                    drinks
-                </div>
-                <div class="menu_product_drink_checkbox">
-                </div>
-                
-            </div>
-            <div class="menu_product_drink  swallow_overlay_checkbox">
-            </div>
-           
-            <div class="menu_product_drink border_bottom_menu menu_product_special_instructions">
-                <div class="menu_overlay_title">
-                    Special Instructions
-                </div>
-                <div class="menu_product_drink_checkbox">
-                   <input type="text" class="special_instructions_input" placeholder="E.g. Please add extra pepper to the meal" min="2" max="40">
-                </div>
-                
-            </div>
-            <button type="submit" class="menu_overlay_submit">
-                <div class="overlay_total_price">
-                    <strong>₦</strong>
-                    <span class="overlay_total_price_text"> </span>
-                </div>
-                <div>
-                    Select
-                </div>
-            </button>
-            <div class="close_btn close_menu_overlay_btn">Cancel</div>
-        </div>
-    </div>
-    <div class="cart_overlay">
-        <div class="cart_overlay_container">
-            <div class="cart_overlay_header">
-                <h1 class="section_header"><span>Your</span> cart</h1>
-                <div class="close-btn"><span class="material-symbols-outlined">
-                    close
-                    </span></div>
-            </div>
-           <div class="cart_overlay_checkoutDetails_cont">
-            <div class="cart_overlay_items">
-                <div class="cart_overlay_item">
-                    <div class="cart_overlay_item_product_cont ">
-                        <p class="cart_overlay_item_product_name">Peppered Snail</p>
-                        <p class="cart_overlay_item_product_drinks">Malt</p>
+            <div class="preview_customer_address_cont">
+                <div class="upper_preview_customer_address_cont">
+                    <div class="upper_preview_customer_address_cont_text">
+                        payment method
                     </div>
-                    <div class="cart_overlay_item_remove_btn">remove</div>
-                    <div class="cart_overlay_item_product_cont">
-                        <p class="cart_overlay_item_product_price">
-                            <span>₦</span>
-                            <span class="cart_overlay_item_product_price_text">1000</span>
-
-                        </p>
-                        <div class="cart_overlay_item_product_quantity_cont">
-                            <div class="cart_overlay_increment_quantity">
-                            
-                                <svg class="Layer_1" version="1.1" viewBox="0 0 15 15" xml:space="preserve" ><path d="M7.5,0C3.364,0,0,3.364,0,7.5S3.364,15,7.5,15S15,11.636,15,7.5S11.636,0,7.5,0z M7.5,14C3.916,14,1,11.084,1,7.5  S3.916,1,7.5,1S14,3.916,14,7.5S11.084,14,7.5,14z"/><rect height="1" width="8" x="3.5" y="7"/></svg>
-                            </div>
-                            <p class="cart_overlay_item_product_quantity_cont"> 3</p>
-                            <div class="cart_overlay_increment_quantity">
-                                <svg viewBox="0 0 32 32" class="Layer_1 Layer_2"><path d="M16,29A13,13,0,1,1,29,16,13,13,0,0,1,16,29ZM16,5A11,11,0,1,0,27,16,11,11,0,0,0,16,5Z"/><path d="M16,23a1,1,0,0,1-1-1V10a1,1,0,0,1,2,0V22A1,1,0,0,1,16,23Z"/><path d="M22,17H10a1,1,0,0,1,0-2H22a1,1,0,0,1,0,2Z"/></svg>
-                            </div>
-                        </div>
-                    </div>
+                 
                 </div>
-               
-            </div>
-            <div class="cart_overlay_checkout_details">
-                <div class="cart_overlay_checkout_details_coupon_cont">
-                    <input type="text" class="cart_overlay_checkout_details_coupon_input" placeholder="Apply coupon code here">
-                    <input type="submit" class="cart_overlay_checkout_details_coupon_btn" value="Apply">
+                <div class="lower_preview_customer_address_cont cart_preview_details">
+                    <h1 class="lower_preview_customer_address_cont_header">pay on delivery</h1>
+                    <p class="lower_preview_customer_address_cont_p">With Cash, Bank Transfers or Cards</p>
                 </div>
-                <div class="cart_overlay_checkout_total_cont">
-                    <p>Total</p>
-                    <span class="cart_overlay_checkout_total">
-                        <p>₦</p>
-                        <p class="cart_overlay_checkout_total_text">1000</p>
-                    </span>
-                </div>
-                <div class="cart_overlay_checkout_btn"><a href="./signup.html"> proceed to checkout</a></div>
             </div>
-           </div>
-        </div>
-    </div>
-    <section class="menu_section">
-      <div class="menu_cont">
-        <div class="menu_bg_img">
-            <img src="./images/menu_images/menu_bg_img.png" class="menu_bg_img_" alt="bg-img">
-        </div>
-      </div>
-      <div class="menu_titles_cont">
-       
-      </div>
-      <div class="menu_items_cont">
-          <div class="menu_item">
-            </div>
-      </div>
-    </section>
+            <button class="orange-bg confirm_order">confirm order </button>
+          
+        </section>
+    
+        
+    <!-- Add an edit button to allow users to make changes -->
+    
 </main>
-<div class="cart_overlay_bottom">
-    <div class="added_items"> <span class="cart_overlay_bottom_total_quantity">1</span><span>item</span></div>
-    <div class="view_cart_button">view cart</div>
-    <div class="total_price_items"> ₦ <span class="cart_overlay_bottom_total_amount"></span></div>
-</div>
-  <a class="scroll-link top-link" href="#home">
+<a class="scroll-link top-link" href="#home">
     <i class="fas fa-arrow-up"></i>
   </a>
+
     <footer>
         
             <div class=" footer_div quick-links">
@@ -245,6 +167,9 @@
               <img src="./images/logo 4.png" alt="logo" class="footer_logo">  
             
     </footer>
+    <script>
+      
+    </script>
     <script src="./js/app.js"></script>
     <script src="./js/menu.js"></script>
 </body>

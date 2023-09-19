@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Call A Bowl">
+    <meta property="og:description" content="A passionate web developer">
+    <meta property="og:image" content="https://github.com/AduDanielTech/Adu-Daniel/blob/main/Portfolio-website/image/page-link-img.png?raw=true">
+    <meta property="og:url" content="https://adu-daniel-fhejs7g.vercel.app/">
+    <title>Call A Bowl</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+  />
+
+    
+</head>
+<body>
+  <main >
+    <a href="./menu.html" class="hovering_back_btn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="back_icon" viewBox="0 -960 960 960" ><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+    </a>
+    <section class="about_sect signup_section">
+        <h1 class="section_header"><span>call-a-bowl</span> details</h1>
+        <div class="location_cont ">
+            <div class="location_suggestions signup_form_containter">
+                <div class=" location_input_container" >
+                    <div class="location_input_background">
+                        <div class="location_input_cont">
+                            <button id="searchLocationButton"> <svg xmlns="http://www.w3.org/2000/svg" class="location_icon" viewBox="0 0 22 21" fill="none">
+                                <path d="M20.0489 0.685688L20.1549 0.679688L20.2849 0.687687L20.3749 0.703687L20.4979 0.738688L20.6049 0.784688L20.7049 0.841687L20.7949 0.908688L20.8769 0.983687L20.9289 1.04269L21.0109 1.15869L21.0629 1.25469C21.1099 1.35469 21.1399 1.46069 21.1529 1.57069L21.1579 1.67669C21.1579 1.75169 21.1499 1.82569 21.1339 1.89669L21.0989 2.01969L14.5669 20.0967C14.4431 20.3663 14.2445 20.5946 13.9947 20.7547C13.745 20.9147 13.4545 20.9998 13.1579 20.9997C12.8907 21.0005 12.6279 20.9322 12.395 20.8013C12.1621 20.6704 11.9671 20.4814 11.8289 20.2527L11.7639 20.1257L8.41189 13.4237L1.74189 10.0877C1.49509 9.97481 1.28225 9.79912 1.12466 9.57818C0.967073 9.35724 0.870254 9.09879 0.843891 8.82869L0.837891 8.67969C0.837891 8.11969 1.13889 7.60769 1.67889 7.30969L1.81889 7.23969L19.8359 0.733687L19.9419 0.703687L20.0489 0.685688Z" fill="#E6782B"/>
+                              </svg></button>
+                           
+                              <input type="text" class="location_input" name="user_input_location" placeholder="Enter your location" id="locationInput">
+                              <div id="locationResults"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.6065944575103!2d3.4715782760509697!3d6.444530993546765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf574af01f5bb%3A0x7a46fa9b8a6dcd8!2sCall%20a%20Bowl!5e0!3m2!1sen!2sng!4v1693788096471!5m2!1sen!2sng" 
+                class="client_location_map" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+                <div class="contact_us_form signup_form">
+                    <input class="user_input_name" type="text" name="user_input_name" id="" placeholder="Name" required>
+                    <input class="user_input_phone_number" type="number" name="user_input_phone_number" id="" placeholder="Phone Number" required>
+                    <input   class="user_input_email email_contact_input" type="email" name="user_input_email" id="" required placeholder="Email Address">
+                    
+                    <input class="form_submit_contact_input"  type="submit" value="proceed to preview" name="" id="">
+                </div>
+        </div>
+   </section>
+</main>
+    <script src="./js/app.js"></script>
+    <script src="./js/signup.js"></script>
+</body>
+</html>
