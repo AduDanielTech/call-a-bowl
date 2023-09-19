@@ -1736,7 +1736,8 @@ border-bottom: 1px rgb(217, 217, 217) solid;
     gap: 1rem;
 }
 .success_img{
-    width: 14pxrem;
+    width: 14rem;
+    mix-blend-mode: difference;
     aspect-ratio: 1 1;
 }
 .success_a{
