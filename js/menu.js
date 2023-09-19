@@ -369,7 +369,7 @@ cartItemsCont.addEventListener('click', (e) => {
   const confirmOrder = document.querySelector('.confirm_order')
   confirmOrder.addEventListener('click', () => {
     clearCart()
-    window.location.href = 'menu.html';
+    window.location.href = 'sucess.html';
   })
 
 
