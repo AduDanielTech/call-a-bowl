@@ -127,7 +127,7 @@ function createMenuItemFromApi(menuData, categoryName) {
   if (existingItem) {
     quantity = existingItem.quantity
   }
-  
+  var formattedNumber = menuData.PRICE.toLocaleString();
     const menuItemDiv = `
         <div class="menu_item_from_api" data-menu="${categoryName}">
             <img src="./images/menu_images/spag_chicked.png" alt="" loading="lazy" class="menu_item_image">
@@ -138,7 +138,7 @@ function createMenuItemFromApi(menuData, categoryName) {
                quantity
                     }</span>
                 </div>
-                <div class="item_price"> ₦ <p class="item_price_text">${menuData.PRICE}</p> <span style="display: none;" class="material-symbols-outlined add_box_google">add_box</span></div>
+                <div class="item_price"> ₦ <p class="item_price_text">${formattedNumber}</p> <span style="display: none;" class="material-symbols-outlined add_box_google">add_box</span></div>
             </div>
         </div>
     `;
@@ -149,10 +149,10 @@ function createMenuItemFromApi(menuData, categoryName) {
 function createDrinksLabel(menuData) {
   const  overlayLabel =
   `
-  <label class="menu_product_drink_checkbox_label label">
- <input type="checkbox" value="${menuData.MENU}" data-price="${menuData.PRICE}">
-  <span class="geekmark"></span>
+  <label class="menu_product_drinks_checkbox_container label" >
   <p>${menuData.MENU}</p>
+  <input  type="checkbox" data-price="${menuData.PRICE}" >
+  <span class="menu_product_drinks_checkbox_checkmark "></span>
 </label>
   `
    return overlayLabel;
@@ -277,6 +277,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add a single click event listener to the parent
 cartItemsCont.addEventListener('click', (e) => {
   const target = e.target;
+  console.log(target);
+  console.log('target');
   
   // Check if the clicked element is an increment button
   if (target.parentElement.classList.contains('cart_overlay_increment_quantity')) {
@@ -293,17 +295,30 @@ cartItemsCont.addEventListener('click', (e) => {
     
     incrementCartItem(itemName);
   }
+   if (target.parentElement.parentElement.parentElement.parentElement.classList.contains('cart_overlay_increment_quantity')) {
+    itemName = target.parentElement.parentElement.parentElement.parentElement.parentElement.dataset.title;
+    
+    incrementCartItem(itemName);
+  }
 
   // Check if the clicked element is a decrement button
   if (target.parentElement.classList.contains('cart_overlay_decrement_quantity')) {
     itemName = target.parentElement.parentElement.parentElement.parentElement.dataset.title;
+    console.log(itemName);
+    decrementCartItem(itemName);
+  }
+  if (target.parentElement.classList.contains('cart_overlay_decrement_quantity')) {
+    console.log(target);
+    itemName = target.parentElement.parentElement.parentElement.parentElement.dataset.title;
     decrementCartItem(itemName);
   }
   if (target.parentElement.parentElement.classList.contains('cart_overlay_decrement_quantity')) {
+    console.log(target);
     itemName = target.parentElement.parentElement.parentElement.parentElement.dataset.title;
     decrementCartItem(itemName);
   }
   if (target.parentElement.parentElement.parentElement.classList.contains('cart_overlay_decrement_quantity')) {
+    console.log(target);
     itemName = target.parentElement.parentElement.parentElement.parentElement.dataset.title;
     decrementCartItem(itemName);
   }
@@ -402,9 +417,10 @@ function clickOnItem(item) {
    const drinkCheckbox = document.querySelector('.menu_product_drink')
 
 /* clicked item variables */
-const itemPrice = item.querySelector('.item_price_text').innerText
+let itemPrice = item.querySelector('.item_price_text').innerText
 const itemName = item.querySelector('.item_name_text').innerText
 
+itemPrice = parseFloat(itemPrice.replace(/,/g, ''));
 
 
  const parentEl = item.parentElement.id
@@ -449,7 +465,7 @@ if (existingItem) {
         /* updating the dom during load */
         overlayMenuName.textContent = itemName
         overlayMenuPrice.innerText = itemPrice 
-        totalOverlayMenuPrice.innerText = itemPrice 
+        totalOverlayMenuPrice.innerText = itemPrice.toLocaleString() 
         modalContainer.classList.add('open-modal')
 
         if (parentEl == 'SOUP') {
@@ -487,7 +503,7 @@ if (existingItem) {
           checkbox.addEventListener('change', updateTotalPrice);
         });
 
-        const drinkCheckboxes = document.querySelectorAll('.menu_product_drink_checkbox_label input[type="checkbox"]');
+        const drinkCheckboxes = document.querySelectorAll('.menu_product_drinks_checkbox_container  input[type="checkbox"]');
         drinkCheckboxes.forEach((checkbox) => {
           checkbox.addEventListener('change', updateTotalPrice);
         });
@@ -533,10 +549,9 @@ if (existingItem) {
 
       function updateTotalPrice() {
         let totalPrice = 0;
-        const itemPriceNumeric = parseFloat(itemPrice.replace('$', '')); // Remove the '$' sign and convert to a float
         const currentQuantity = parseInt(quantity.innerText, 10);
-        let total = itemPriceNumeric * currentQuantity;
-        const checkboxes = document.querySelectorAll('.menu_product_swallow_checkbox_container input[type="checkbox"]:checked, .menu_product_drink_checkbox_label input[type="checkbox"]:checked');
+        let total = itemPrice * currentQuantity;
+        const checkboxes = document.querySelectorAll('.menu_product_swallow_checkbox_container input[type="checkbox"]:checked, .menu_product_drinks_checkbox_container input[type="checkbox"]:checked');
 
         checkboxes.forEach((checkbox) => {
           const price = parseFloat(checkbox.dataset.price);
@@ -548,7 +563,7 @@ if (existingItem) {
         });
 
         
-        totalOverlayMenuPrice.textContent =  total.toFixed(2); // Format the total with two decimal places
+        totalOverlayMenuPrice.textContent =  total.toLocaleString()// Format the total with two decimal places
       }
 
       /* OVERLAY ENDS */
@@ -557,11 +572,11 @@ if (existingItem) {
         // Collect data from the HTML elements
         const itemTitle = document.querySelector('.order_title').textContent;
         const quantity = parseInt(document.querySelector('.menu_overlay_quantity').textContent);
-        const total_price = parseFloat(document.querySelector('.overlay_total_price_text').textContent);
+        let total_price = parseFloat(document.querySelector('.overlay_total_price_text').textContent);
         const specialInstructionsElement = document.querySelector('.special-instructions-input');
         const specialInstructions = specialInstructionsElement ? specialInstructionsElement.value : null;
         const categoryName = item.dataset.menu
-
+        console.log(total_price);
         // Check if an item with the same title already exists in the cart
         const existingItemIndex = cart.findIndex((cartItem) => cartItem.itemTitle === itemTitle);
 
@@ -574,11 +589,12 @@ if (existingItem) {
         } else {
           // If it doesn't exist, create a new cart item
           const selectedDrinks = [];
-          const drinkCheckboxes = document.querySelectorAll('.menu_product_drink_checkbox_label input[type="checkbox"]:checked');
+          const drinkCheckboxes = document.querySelectorAll('.menu_product_drinks_checkbox_container input[type="checkbox"]:checked');
           if (drinkCheckboxes.length > 0) {
             drinkCheckboxes.forEach((checkbox) => {
+              console.log(selectedDrinks);
               selectedDrinks.push({
-                [checkbox.nextElementSibling.nextElementSibling.textContent]: checkbox.dataset.price,
+                [checkbox.nextElementSibling.textContent]: checkbox.dataset.price,
               });
             });
           }
@@ -640,12 +656,15 @@ if (existingItem) {
 
 
 
-
+      modalContainer.addEventListener('click', (e)=>{
+       if(e.target.className ==='modal-overlay open-modal'){
+         returnToDefault();
+       }
+      })
       closeMenuOverlayBtn.addEventListener('click', () => {
         returnToDefault();
-        location.reload()
       });
-
+  
       selectProductClickedBtn.addEventListener('click', () => {
         addToCart(item);
         location.reload()
@@ -668,7 +687,8 @@ if (existingItem) {
 
 function calculateTotal(param) {
   const totalAmount = param.reduce((total, item) => total + item.total_price, 0);
-  return totalAmount
+  var formattedNumber = totalAmount.toLocaleString();
+  return formattedNumber
 }
 
 const cartOverlay = document.querySelector('.cart_overlay')
@@ -694,9 +714,8 @@ cartOverlayBottom.addEventListener('click', cartOverlayFunc)
 const closeBtn = document.querySelector('.close-btn')
 
 closeBtn.addEventListener('click', () => {
+  location.reload();
   document.body.style.overflow = 'auto';
-  
-
   cartOverlay.classList.remove('open-modal')
   })
 
@@ -725,6 +744,7 @@ function populateCartOverlay(cartData,cartItemsCont,total) {
   }
 
   function createCartItemsInOverlay(data) {
+    var formattedNumber = data.total_price.toLocaleString();
     const overlayLabel = `
     <div class="cart_overlay_item" data-title="${data.itemTitle}">
       <div class="cart_overlay_item_product_cont cart_overlay_item_product_cont_items">
@@ -736,7 +756,7 @@ function populateCartOverlay(cartData,cartItemsCont,total) {
       <div class="cart_overlay_item_product_cont">
         <p class="cart_overlay_item_product_price">
           <span>₦</span>
-          <span class="cart_overlay_item_product_price_text">${data.total_price}</span>
+          <span class="cart_overlay_item_product_price_text">${formattedNumber}</span>
         </p>
         <div class="cart_overlay_item_product_quantity_cont">
           <div class=" cart_overlay_decrement_quantity">

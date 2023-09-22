@@ -25,6 +25,7 @@
     --smaller-font-size:0.8rem;
     --smallest-font-size:0.6rem;
     --landing-header-size:  3.4rem;
+    --landing-p-size:  1.5rem;
     --special-order-header-size:2.5rem;
     --page-padding-: 0px 54px ;
     --transition:all ease-in-out 0.3s;
@@ -243,6 +244,7 @@ font-weight: 700;
     font-weight: 700;
     line-height: 50px;
     color: var(--grey--);
+    font-size:var(--landing-p-size);
 }
 .landing_buttons{
     display: flex;
@@ -318,7 +320,7 @@ transform: translateX(40px);
     height: 534px;
 }
 .tilt a{
-    font-size: var(--smaller-font-size);
+    font-size: var(--small-font-size);
     display: inline-flex;
     height: 59px;
     padding: 0px 40px;
@@ -453,12 +455,10 @@ margin-bottom: 2rem;
 .special_order_cards{
     width: 30%;
     display: flex;
-padding: var(--default-font-size) var(--small-font-size); 
-justify-content: space-around;
-min-height: 400px;
+justify-content: space-between;
+min-height: 380px;
 flex-direction: column;
-align-items: start;
-
+align-items: center;
 border-radius: 9px;
 border: 1px solid #E6782B;
 background: #FFF;
@@ -467,12 +467,11 @@ background: #FFF;
     aspect-ratio: 1  1;
     width: 100%;
     object-fit:contain;
- box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
 }
 .special_order_cards p{
     font-size: var(--small-font-size);
     color: #000;
-    font-weight: 700;
+    
 }
 .special_order_cards button{
     color: #FFF;
@@ -480,13 +479,16 @@ font-weight: 700;
 line-height: normal;
 }
 .special_details{
+    padding: var(--small-font-size) var(--smaller-font-size); 
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    height: 100%;
     width: 100%;
 }
-
-
+.order_now{
+    width: fit-content;
+}
 
 
 
@@ -565,8 +567,8 @@ height: 100px;
 }
 
 .map_svg{
-    width: 60px;
-    height: 60px;
+    width: 5rem;
+    height: 5rem;
 }
 
 
@@ -620,6 +622,9 @@ height: 100px;
 .main_about_img{
     width: 50%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     background-repeat: no-repeat;
     background-position:center;
@@ -629,8 +634,9 @@ height: 100px;
 
 .inner_img{
     position: absolute;
-    bottom: 30px;
-    right: 30px;
+    width: 40%;
+    bottom: 5rem;
+    right: -10px;
 }
 .inner_img_smaller{
     position: absolute;
@@ -646,6 +652,11 @@ height: 100px;
     bottom: 10px;
     transform: rotate(150deg);
 }
+.bigger_img{
+    width: 70%;
+    aspect-ratio: 1 1;
+    transform: translateY(20px);
+}
 .about_sect .bold_text{
     font-weight: 800;
 }
@@ -653,6 +664,10 @@ height: 100px;
     display: flex;
     width: 100%;
 }
+.second_about_div p{
+    font-size: var(--default-font-size);
+}
+
 .second_about_div > div{
     display: flex;
     flex-direction: column;
@@ -1016,6 +1031,8 @@ background-color: var(--orange-50);
   .closee-btn{
     z-index:255;
   }
+
+
   .modal-container {
     background: white;
     border-radius: var(--radius);
@@ -1049,8 +1066,9 @@ background-color: var(--orange-50);
     flex-direction: column;
     gap: 1rem;
     width: 50%;
-    
   }
+
+  
 
   .menu_product_price{
     display: flex;
@@ -1064,10 +1082,20 @@ background-color: var(--orange-50);
 
 .menu_overlay_title{
     color: #000;
+    font-weight: 800;
+    display: flex;
+    text-transform: capitalize;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu_overlay_title .close_modal_overlay{
+    font-size: var(--landing-header-size);
+    color: var(--orange-100);
+}
+.menu_overlay_title p{
     font-size: var(--small-font-size);
-font-weight: 800;
-word-spacing: 0.3rem;
-text-transform: capitalize;
+    word-spacing: 0.3rem;
+    text-transform: capitalize;
 }
 .order_title{
     width: 100%;
@@ -1111,7 +1139,9 @@ text-transform: capitalize;
 }
 
 
-
+.menu_product_drink_checkbox{
+    margin-top: 1rem;
+}
  .menu_product_drink_checkbox_label p{
     font-size: var(--smaller-font-size) !important;  
  }
@@ -1163,8 +1193,10 @@ based on demand */
     grid-template-columns: repeat(3, 1fr);
     place-content: center;
 }
+
+
 /* The container */
-.menu_product_swallow_checkbox_container {
+.menu_product_swallow_checkbox_container , .menu_product_drinks_checkbox_container {
     display: block;
     position: relative;
     padding-left: 1.6rem;
@@ -1178,19 +1210,19 @@ based on demand */
   }
   
   /* Hide the browser's default checkbox */
-  .menu_product_swallow_checkbox_container input {
+  .menu_product_swallow_checkbox_container input  , .menu_product_drinks_checkbox_container  input{
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
   }
-  .menu_product_swallow_checkbox_container p {
+  .menu_product_swallow_checkbox_container p , .menu_product_drinks_checkbox_container  p{
   font-size: var(--smaller-font-size);
   }
   
   /* Create a custom checkbox */
-  .menu_product_swallow_checkbox_checkmark {
+  .menu_product_swallow_checkbox_checkmark, .menu_product_drinks_checkbox_checkmark {
     position: absolute;
     top: 0;
     left: 0;
@@ -1202,29 +1234,29 @@ based on demand */
   }
   
   /* On mouse-over, add a grey background color */
-  .menu_product_swallow_checkbox_container:hover input ~ .menu_product_swallow_checkbox_checkmark {
+  .menu_product_swallow_checkbox_container:hover input ~ .menu_product_swallow_checkbox_checkmark ,.menu_product_drinks_checkbox_container:hover input ~  .menu_product_drinks_checkbox_checkmark{
     background-color: #ccc;
   }
   
   /* When the checkbox is checked, add a blue background */
-  .menu_product_swallow_checkbox_container input:checked ~ .menu_product_swallow_checkbox_checkmark {
+  .menu_product_swallow_checkbox_container input:checked ~ .menu_product_swallow_checkbox_checkmark , .menu_product_drinks_checkbox_container input:checked ~ .menu_product_drinks_checkbox_checkmark{
     background-color: var(--orange-100);
   }
   
   /* Create the checkmark/indicator (hidden when not checked) */
-  .menu_product_swallow_checkbox_checkmark:after {
+  .menu_product_swallow_checkbox_checkmark:after, .menu_product_drinks_checkbox_checkmark::after {
     content: "";
     position: absolute;
     display: none;
   }
   
   /* Show the checkmark when checked */
-  .menu_product_swallow_checkbox_container input:checked ~ .menu_product_swallow_checkbox_checkmark:after {
+  .menu_product_swallow_checkbox_container input:checked ~ .menu_product_swallow_checkbox_checkmark:after,  .menu_product_drinks_checkbox_container input:checked ~ .menu_product_drinks_checkbox_checkmark:after  {
     display: block;
   }
   
   /* Style the checkmark/indicator */
-  .menu_product_swallow_checkbox_container .menu_product_swallow_checkbox_checkmark:after {
+  .menu_product_swallow_checkbox_container .menu_product_swallow_checkbox_checkmark:after, .menu_product_drinks_checkbox_container .menu_product_drinks_checkbox_checkmark:after {
     left: 7px;
     top: 5px;
     width: 5px;
@@ -1284,14 +1316,7 @@ based on demand */
     display: flex;
     gap: 0.3rem;
 }
-.close_btn{
-    display: flex;
-    text-align: end;
-    justify-content: end;
-    align-items: end;
-    padding-right: 1rem;
-    cursor: pointer;
-}
+
 
 
 
@@ -1578,6 +1603,8 @@ based on demand */
 .contact_us_bg_cont h1{
     color: white;
     font-size:var(--special-order-header-size);
+    padding: 1rem;
+    z-index: 3;
 }
 .contact_us_bg_cont_
 img{
@@ -1613,6 +1640,7 @@ img{
 .textarea_contact_input{
     width: 99% !important; 
     display: flex;
+    font-family: var(--lato-font-family);
     justify-content: start;
     align-items: start;
     height: 300px;
@@ -1628,11 +1656,14 @@ img{
     width: 50%;
     height: 100%;
 }
+
 .client_location_map{
     width: 100%;
     height:200px;
 }
-
+.client_location_map_contact{
+    height:530px;
+}
 
 
 
@@ -2000,7 +2031,6 @@ gap: 1rem;
     aspect-ratio:  1 1;
     background-size: cover;
 width: 50%;
-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
 }
 .special_order h1{
 font-size: var(--special-order-header-size);
@@ -2187,10 +2217,14 @@ width:  50%;
     margin-top: 0.5rem;
     height: fit-content;
     padding: 1rem;
+    display: flex;
+
 }
 .contact_us_bg_cont_img{
-height: 10%;
-width: 20%;
+height: 30%;
+width: 40%;
+display: none;
+
 object-fit: cover;
 
 }
@@ -2208,18 +2242,18 @@ object-fit: cover;
     display: flex;
     gap: 3%;
     flex-wrap: wrap;
-    padding-bottom: 2rem;
 }
 .textarea_contact_input{
     height: 150px;
 }
 .client_location_map{
     width: 100%;
-    height:100px;
+    height:200px;
 }
 .client_location{
     width: 100%;
     height: 100%;
+    padding-bottom: 2rem;   
 }
 .signup_form{
     
@@ -2394,19 +2428,19 @@ gap: 1rem;
 .special_order_cards{
     width: 30%;
     display: flex;
-padding: var(--small-font-size) var(--smaller-font-size); 
+    padding: 0.2rem 0.3rem ; 
 justify-content: space-between;
-min-height: 350px;
+min-height: 320px;
 }
 .special_details{
     display: flex;    
     flex-direction: column;
+    padding: var(--small-font-size) var(--small-font-size); 
     gap: 0.8rem;
 }
 .special_order_cards_img{
     mix-blend-mode:multiply;
     aspect-ratio: 1 1;
-box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
 }
 .phone_svg, .email_svg{
     width: 18px;
@@ -2414,11 +2448,13 @@ box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
 }
 
 .map_svg{
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
 }
 
-
+.client_location_map_contact{
+    height:470px;
+}
 
 .location_cont{
     flex-direction: column;
@@ -2438,6 +2474,26 @@ box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
 .menu_titles_cont{
    top: 5.2rem; 
     overflow-x: scroll;
+}
+
+.inner_img{
+    position: absolute;
+    width: 100px;
+    bottom: 5rem;
+}
+.inner_img_smaller{
+    right: -5px;
+    top: 150px;
+}
+.inner_img_sphere{
+    left: 150px;
+    bottom: 10px;
+    transform: rotate(150deg);
+}
+.bigger_img{
+    width: 400px;
+    aspect-ratio:  1  1;
+    transform: translateY(20px);
 }
 }
 /* , 768px, 1024px, and 1200px */
