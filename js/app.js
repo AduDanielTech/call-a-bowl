@@ -17,7 +17,7 @@ function toggleLinks() {
     const linksHeight = links.getBoundingClientRect().height;
     const containerHeight = linksContainer.getBoundingClientRect().height;
     if (containerHeight === 0) {
-      linksContainer.style.height = `240px`;
+      linksContainer.style.height = `200px`;
     } else {
       linksContainer.style.height = 0;
     }

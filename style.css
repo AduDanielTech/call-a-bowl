@@ -152,7 +152,7 @@ height: 90px;
 
 .nav_links{
 display: flex;
-justify-content: center;
+justify-content: space-between;
 align-items: center;
 gap: 2rem;
 
@@ -173,10 +173,6 @@ gap: 2rem;
     transition: var(--transition);
     cursor: pointer;
     display: none;
-  }
-  .nav-toggle:hover {
-    color: ora;
-    transform: rotate(90deg);
   }
 
   .fixed-nav {
@@ -641,19 +637,19 @@ height: 100px;
 .inner_img_smaller{
     position: absolute;
     width: 40px;
-    right: 10px;
+    right: 2%;
     top: 100px;
 }
 .inner_img_sphere{
     position: absolute;
     width: 70px;
     height: 20px;
-    left: 250px;
+    right: 50%;
     bottom: 10px;
     transform: rotate(150deg);
 }
 .bigger_img{
-    width: 70%;
+    width: 100%;
     aspect-ratio: 1 1;
     transform: translateY(20px);
 }
@@ -685,13 +681,16 @@ height: 100px;
 .inner_img_2{
     position: absolute;
     top: 150px;
-    left: -50px;
+    left: 37px;
+    top: 35%;
+    width: 30%;
 }
 .inner_img_smaller_2{
     position: absolute;
-    width: 40px;
-    left: 80px !important;
-    bottom: 5px;
+    width: 7%;
+    left: 15% !important;
+    top: 70%;
+    z-index: 2;
     
 }
 .inner_img_sphere_2{
@@ -701,6 +700,10 @@ height: 100px;
     left: 140px;
     top: 30px;
     transform: rotate(120deg);
+}
+.bigger_img_2{
+    position: relative;
+    width: 50%;
 }
 
 
@@ -2105,19 +2108,24 @@ width:  50%;
     bottom: 2px;
     transform: rotate(150deg);
 }
+.bigger_img{
+
+    width: 70%;
+}
 .inner_img_2{
     position: absolute;
-    top: 80px;
-    left: 0px;
+    top: 90px;
+    left: 10px;
     width: 30%;
 }
+
 .inner_img_smaller_2{
     position: absolute;
     width: 30px;
-    left: 15% !important;
-    bottom: 5px;
-    
+    left: 10% !important;
+    top: 80%;
 }
+
 .inner_img_sphere_2{
     position: absolute;
     width: 50px;
@@ -2478,22 +2486,30 @@ min-height: 320px;
 
 .inner_img{
     position: absolute;
-    width: 100px;
-    bottom: 5rem;
+    width: 50%;
+    right: -40px;
+    bottom: 15%;
 }
 .inner_img_smaller{
-    right: -5px;
+    right: -10%;
     top: 150px;
 }
 .inner_img_sphere{
-    left: 150px;
-    bottom: 10px;
+    right: 40%;
+    bottom: 10%;
     transform: rotate(150deg);
 }
 .bigger_img{
-    width: 400px;
+    width: 100%;
     aspect-ratio:  1  1;
     transform: translateY(20px);
+}
+.inner_img_2{
+    position: absolute;
+    top: 150px;
+    left: 20px;
+    top: 41%;
+    width: 30%;
 }
 }
 /* , 768px, 1024px, and 1200px */
