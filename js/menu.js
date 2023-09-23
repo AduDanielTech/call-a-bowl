@@ -32,7 +32,10 @@ function removeFromCart(itemIndex) {
 }
 
 
-
+function addDashes(str) {
+  // Use a regular expression to replace spaces with dashes globally
+  return str.replace(/\s+/g, '_');
+}
 
 // Function to fetch and load JSON data from an external file
 async function loadJSONData() {
@@ -66,9 +69,9 @@ function populateMenu() {
             menuTitlesCont.appendChild(createTitleDiv(categoryName));
 
             // Create a container for menu items in this category
-            const categoryContainer = document.createElement('article');
+            const categoryContainer = document.createElement('section');
             categoryContainer.classList.add('menu_main_cont');
-            categoryContainer.id = categoryName
+            categoryContainer.id = addDashes(categoryName)
             categoryContainer.setAttribute('data-id', categoryName);
 
 
@@ -91,13 +94,11 @@ function populateMenu() {
             }
 
 
-            // Append the category container to the menuItemsCont
+            
             menuItemsCont.appendChild(categoryContainer);
         }
     });
 }
-
-// Call the function to load JSON data and populate the menu
 
 
 
@@ -106,7 +107,7 @@ function populateMenu() {
 // Function to create a title div
 function createTitleDiv(titleText) {
     const titleDiv = document.createElement('a');
-    titleDiv.href = `#${titleText}`;
+    titleDiv.href = `#${addDashes(titleText)}`;
     titleDiv.classList.add('menu_title');
     titleDiv.classList.add('menu-link');
     titleDiv.textContent = titleText;
@@ -170,6 +171,9 @@ function decrementClickedItem(itemClicked) {
 document.addEventListener('DOMContentLoaded', () => {
   loadJSONData()
   .then(() => {
+    
+      
+    
     initializeCartFromLocalStorage();
      if (window.location.href.includes("menu.html")) {
       
@@ -258,6 +262,29 @@ document.addEventListener('DOMContentLoaded', () => {
       clickOnItem(article)
     })
 
+
+
+
+
+
+
+
+
+    if (window.location.hash) {
+      let hash = window.location.hash      
+      var targetElement = document.getElementById(hash.substring(1));
+      const navHeight = navbar.getBoundingClientRect().height;
+        const menuItemsHeight = menuItemsCont.getBoundingClientRect().height;
+      if (targetElement) {
+        let position = targetElement.offsetTop + (navHeight + menuItemsHeight);
+        position= position - 400
+        window.scrollTo({
+          left: 0,
+          top: position,
+        });
+      }
+    }
+  
    
    })
 
@@ -277,8 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add a single click event listener to the parent
 cartItemsCont.addEventListener('click', (e) => {
   const target = e.target;
-  console.log(target);
-  console.log('target');
+  
+
   
   // Check if the clicked element is an increment button
   if (target.parentElement.classList.contains('cart_overlay_increment_quantity')) {
@@ -304,21 +331,21 @@ cartItemsCont.addEventListener('click', (e) => {
   // Check if the clicked element is a decrement button
   if (target.parentElement.classList.contains('cart_overlay_decrement_quantity')) {
     itemName = target.parentElement.parentElement.parentElement.parentElement.dataset.title;
-    console.log(itemName);
+    
     decrementCartItem(itemName);
   }
   if (target.parentElement.classList.contains('cart_overlay_decrement_quantity')) {
-    console.log(target);
+    
     itemName = target.parentElement.parentElement.parentElement.parentElement.dataset.title;
     decrementCartItem(itemName);
   }
   if (target.parentElement.parentElement.classList.contains('cart_overlay_decrement_quantity')) {
-    console.log(target);
+    
     itemName = target.parentElement.parentElement.parentElement.parentElement.dataset.title;
     decrementCartItem(itemName);
   }
   if (target.parentElement.parentElement.parentElement.classList.contains('cart_overlay_decrement_quantity')) {
-    console.log(target);
+    
     itemName = target.parentElement.parentElement.parentElement.parentElement.dataset.title;
     decrementCartItem(itemName);
   }
@@ -381,6 +408,10 @@ cartItemsCont.addEventListener('click', (e) => {
   const cartItemsCont = document.querySelector('.cart_preview_details');
   const cartOverlayTotalText = document.querySelector('.total_cont_text');      
   populateCartOverlay(cart,cartItemsCont,cartOverlayTotalText)
+    const decrementBtn = document.querySelector('.cart_overlay_decrement_quantity')
+    const incrementBtn = document.querySelector('.cart_overlay_increment_quantity')
+    const removebtn = document.querySelector('.cart_overlay_item_remove_btn')
+
   const confirmOrder = document.querySelector('.confirm_order')
   confirmOrder.addEventListener('click', () => {
     clearCart()
@@ -467,7 +498,7 @@ if (existingItem) {
         overlayMenuPrice.innerText = itemPrice 
         totalOverlayMenuPrice.innerText = itemPrice.toLocaleString() 
         modalContainer.classList.add('open-modal')
-
+      console.log(totalOverlayMenuPrice);
         if (parentEl == 'SOUP') {
           const swallowOptionHtml = `
             <div class="menu_product_drink border_bottom_menu swallow_menu_options">
@@ -552,7 +583,7 @@ if (existingItem) {
         const currentQuantity = parseInt(quantity.innerText, 10);
         let total = itemPrice * currentQuantity;
         const checkboxes = document.querySelectorAll('.menu_product_swallow_checkbox_container input[type="checkbox"]:checked, .menu_product_drinks_checkbox_container input[type="checkbox"]:checked');
-
+        
         checkboxes.forEach((checkbox) => {
           const price = parseFloat(checkbox.dataset.price);
           
@@ -561,9 +592,11 @@ if (existingItem) {
           }
           
         });
-
+       
         
-        totalOverlayMenuPrice.textContent =  total.toLocaleString()// Format the total with two decimal places
+        totalOverlayMenuPrice.textContent =  total.toLocaleString()
+   
+
       }
 
       /* OVERLAY ENDS */
@@ -572,10 +605,11 @@ if (existingItem) {
         // Collect data from the HTML elements
         const itemTitle = document.querySelector('.order_title').textContent;
         const quantity = parseInt(document.querySelector('.menu_overlay_quantity').textContent);
-        let total_price = parseFloat(document.querySelector('.overlay_total_price_text').textContent);
+        let total_price = document.querySelector('.overlay_total_price_text').textContent
         const specialInstructionsElement = document.querySelector('.special-instructions-input');
         const specialInstructions = specialInstructionsElement ? specialInstructionsElement.value : null;
         const categoryName = item.dataset.menu
+         total_price = parseInt(total_price.replace(/,/g, ''), 10);
         console.log(total_price);
         // Check if an item with the same title already exists in the cart
         const existingItemIndex = cart.findIndex((cartItem) => cartItem.itemTitle === itemTitle);
@@ -592,7 +626,7 @@ if (existingItem) {
           const drinkCheckboxes = document.querySelectorAll('.menu_product_drinks_checkbox_container input[type="checkbox"]:checked');
           if (drinkCheckboxes.length > 0) {
             drinkCheckboxes.forEach((checkbox) => {
-              console.log(selectedDrinks);
+              
               selectedDrinks.push({
                 [checkbox.nextElementSibling.textContent]: checkbox.dataset.price,
               });
@@ -608,7 +642,7 @@ if (existingItem) {
               });
             });
           }
-
+        
           createCartItem(
             itemTitle,
             quantity,

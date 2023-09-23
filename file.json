@@ -66,6 +66,16 @@
                     "BOWLS": 300
                 },
                 {
+                    "MENU": "Jollof Rice & Fried Plantain with Turkey",
+                    "PRICE": 3200,
+                    "BOWLS": 200
+                },
+                {
+                    "MENU": "Jollof Rice & Fried Plantain with Chicken",
+                    "PRICE": 3000,
+                    "BOWLS": 200
+                },
+                {
                     "MENU": "White Rice & Ofada Sauce with Boiled Egg & Protein bites",
                     "PRICE": 3000,
                     "BOWLS": 300
@@ -95,16 +105,8 @@
                     "PRICE": 3300,
                     "BOWLS": 200
                 },
-                {
-                    "MENU": "Jollof Rice & Fried Plantain with Turkey",
-                    "PRICE": 3200,
-                    "BOWLS": 200
-                },
-                {
-                    "MENU": "Jollof Rice & Fried Plantain with Chicken",
-                    "PRICE": 3000,
-                    "BOWLS": 200
-                },
+                
+               
                 {
                     "MENU": "White Rice & Fried Plantain with Designer Beef Sauce & Boiled Egg",
                     "PRICE": 3200,
