@@ -396,6 +396,48 @@ cartItemsCont.addEventListener('click', (e) => {
   }
   
 }else if (window.location.href.includes("preview.html")) {
+
+  //
+
+  function formatCartAsSentence(cart) {
+    var sentence = "Cart Contents: ";
+    
+    for (var i = 0; i < cart.length; i++) {
+      var item = cart[i];
+      var totalPriceWithoutSymbol = item.total_price.toString().replace('₦', ''); // Remove ₦ symbol
+      var itemTitleWithoutAmpersand = item.itemTitle.replace('&', 'and'); // Replace & with "and"
+  
+      var drinksSentence = "";
+      if (item.drinks.length > 0) {
+        var drinkNames = Object.keys(item.drinks[0]);
+        var drinkPrice = item.drinks[0][drinkNames[0]];
+        drinksSentence = `with ${drinkNames[0]} - ₦${drinkPrice}`;
+      }
+  
+      var swallowsSentence = "";
+      if (item.swallows.length > 0) {
+        var swallowNames = Object.keys(item.swallows[0]);
+        var swallowPrice = item.swallows[0][swallowNames[0]];
+        swallowsSentence = `with ${swallowNames[0]} - ₦${swallowPrice}`;
+      }
+  
+      var itemSentence = `${item.quantity}x ${itemTitleWithoutAmpersand} - ₦${totalPriceWithoutSymbol} ${drinksSentence} ${swallowsSentence}`;
+      
+      // Add a comma and space between items (except for the last one)
+      if (i < cart.length - 1) {
+        itemSentence += ", ";
+      }
+  
+      sentence += itemSentence;
+    }
+  
+    return sentence;
+  }
+  
+  
+
+
+
   initializeCartFromLocalStorage();
   // Retrieve the form data from local storage
   const savedFormData = JSON.parse(localStorage.getItem('userDetails'));
@@ -412,14 +454,18 @@ cartItemsCont.addEventListener('click', (e) => {
     const incrementBtn = document.querySelector('.cart_overlay_increment_quantity')
     const removebtn = document.querySelector('.cart_overlay_item_remove_btn')
 
+
+
+   
+    const whatsapp = `${savedFormData.name},${savedFormData.location},${savedFormData.emailAddress},${formatCartAsSentence(cart)},total: ₦${calculateTotal(cart)}`
+            
   const confirmOrder = document.querySelector('.confirm_order')
   confirmOrder.addEventListener('click', () => {
-    clearCart()
-    window.location.href = 'sucess.html';
+    // Redirect the user to the specified link
+
+
+    window.location.href =`https://wa.me/2348034023196?text=${whatsapp}%20`;
   })
-
-
-
 }
 
    
@@ -622,13 +668,12 @@ if (existingItem) {
           
         } else {
           // If it doesn't exist, create a new cart item
-          const selectedDrinks = [];
+          let selectedDrinks = [];
           const drinkCheckboxes = document.querySelectorAll('.menu_product_drinks_checkbox_container input[type="checkbox"]:checked');
           if (drinkCheckboxes.length > 0) {
             drinkCheckboxes.forEach((checkbox) => {
-              
               selectedDrinks.push({
-                [checkbox.nextElementSibling.textContent]: checkbox.dataset.price,
+                [checkbox.previousElementSibling.textContent]: checkbox.dataset.price,
               });
             });
           }
