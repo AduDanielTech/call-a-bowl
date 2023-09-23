@@ -1,12 +1,4 @@
-// Element.getBoundingClientRect() method returns the size of an element and its position relative to the viewport.
-// pageYOffset is a read - only window property that returns the number of pixels the document has been scrolled vertically.
-// slice extracts a section of a string without modifying original string
-//offsetTop - A Number, representing the top position of the element, in pixels
-
-// ********** set date ************
-// select span
-/* const date = document.getElementById("date");
-date.innerHTML = new Date().getFullYear(); */
+let cart = [];
 
 const linksContainer = document.querySelector(".link_container");
 function toggleLinks() {
@@ -118,3 +110,66 @@ function decrementClickedItem(itemClicked) {
   itemClicked.quantity--
   itemClicked.total_price = itemClicked.quantity  * itemClicked.default_price;
 }
+
+function initializeCartFromLocalStorage() {
+  const cartData = localStorage.getItem('cart');
+
+  if (cartData) {
+    cart = JSON.parse(cartData);
+  }
+}
+
+
+function saveCartToLocalStorage() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initializeCartFromLocalStorage()
+
+  const order_nowBtns = document.querySelectorAll('.order_now')
+  
+  order_nowBtns.forEach((btns) => {
+    btns.addEventListener('click', () => {
+      const orderParent =  btns.parentElement
+      const itemTitle = orderParent.querySelector('.special_order_title')
+      const itemPrice = orderParent.querySelector('.special_details_price')
+      const categoryName = itemTitle.dataset.category
+
+
+var priceNumber = parseFloat(itemPrice.textContent.replace(/₦|,/g, ''));
+      
+
+       createCartItem(
+        itemTitle.textContent,
+        1,
+        [],
+        [],
+        '',
+        categoryName,
+        priceNumber,
+        priceNumber
+        )
+         window.location.href="./preview.html" 
+
+
+    })
+  })
+  
+
+  function createCartItem(itemTitle, quantity, drinks, swallows, specialInstructions,categoryName, default_price, total_price) {
+    const newItem = {
+      itemTitle,
+      quantity,
+      drinks,
+      swallows,
+      specialInstructions,
+      categoryName,
+      default_price,
+      total_price,
+    };
+    cart.push(newItem);
+    saveCartToLocalStorage()
+  }
+ 
+})

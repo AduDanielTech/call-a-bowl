@@ -1,13 +1,9 @@
 
-
-
 let SWALLOW_OPTION;
 // Your JSON data
 let jsonData;
 
 
-/* local storage */
-let cart = [];
 
 // Function to initialize the cart from local storage
 function initializeCartFromLocalStorage() {
@@ -463,8 +459,10 @@ cartItemsCont.addEventListener('click', (e) => {
   confirmOrder.addEventListener('click', () => {
     // Redirect the user to the specified link
 
-
-    window.location.href =`https://wa.me/2348034023196?text=${whatsapp}%20`;
+    var whatsappUrl = `https://wa.me/2349079730611?text=${encodeURIComponent(whatsapp)}`;
+    window.open(whatsappUrl, "_blank");
+    clearCart()
+    window.location.href="./sucess.html"
   })
 }
 
